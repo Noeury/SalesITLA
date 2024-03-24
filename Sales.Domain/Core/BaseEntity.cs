@@ -21,7 +21,7 @@ namespace Sales.Domain.Core
         public int? IdUsuarioMod { get; set; }
         public int? IdUsuarioElimino { get; set; }
         public DateTime? FechaElimino { get; set; }
-        public Boolean Eliminado { get; set; }
+        public bool Eliminado { get; set; }
 
     }
 }
