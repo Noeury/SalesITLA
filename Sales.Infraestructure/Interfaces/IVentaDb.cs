@@ -5,6 +5,6 @@ namespace Sales.Infraestructure.Interfaces
 {
     public interface IVentaDb : IDaoBase<Venta>
     {
-
+        //Logica exclusiva de Venta
     }
 }

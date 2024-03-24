@@ -5,5 +5,8 @@ using Sales.Infraestructure.Core;
 
 namespace Sales.Infraestructure.Interfaces
 {
-    public interface INegocioDb : IDaoBase<Negocio> { }
+    public interface INegocioDb : IDaoBase<Negocio>
+    {
+        //Logica exclusva de los negocios
+    }
 }
