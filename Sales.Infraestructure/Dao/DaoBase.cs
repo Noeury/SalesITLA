@@ -1,21 +1,22 @@
-﻿using Sales.Infraestructure.Core;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.EntityFrameworkCore;
+using Sales.Infraestructure.Context;
+using Sales.Infraestructure.Core;
+
 
 namespace Sales.Infraestructure.Dao
 {
     public abstract class DaoBase<TEntity> : IDaoBase<TEntity> where TEntity : class
     {
+        public readonly SalesContext context;
+        private DbSet<TEntity> entities;
 
-        private List<TEntity> entities;
-
-        public DaoBase()
+        public DaoBase(SalesContext context)
         {
-            this.entities = new List<TEntity>();
+            this.context = context;
+            entities = context.Set<TEntity>();
         }
+
+
 
         public virtual bool Exists(Func<TEntity, bool> filter)
         {
@@ -24,12 +25,22 @@ namespace Sales.Infraestructure.Dao
 
         public virtual List<TEntity> GetAll()
         {
-            throw new NotImplementedException();
+            return entities.ToList();
         }
 
         public virtual TEntity GetById(Func<TEntity, bool> filter)
         {
             return this.entities.First(filter);
+        }
+
+        public TEntity GetById(int Id)
+        {
+            return this.entities.Find(Id);
+        }
+
+        public List<TEntity> GetEntitiesWithFilters(Func<TEntity, bool> filter)
+        {
+            return this.entities.Where(filter).ToList();
         }
 
         public virtual DataResult Save(TEntity entity)
@@ -43,9 +54,21 @@ namespace Sales.Infraestructure.Dao
             return result;
         }
 
-        public virtual void Update(TEntity entity)
+        public virtual DataResult Update(TEntity entity)
         {
-            throw new NotImplementedException();
+            DataResult result = new DataResult();
+
+            this.entities.Update(entity);
+            result.Success = true;
+
+            return result;
         }
+
+        public int Commit()
+        {
+            return this.context.SaveChanges();
+        }
+
+
     }
 }
