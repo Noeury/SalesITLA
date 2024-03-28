@@ -33,12 +33,12 @@ namespace Sales.Infraestructure.Dao
             return this.entities.First(filter);
         }
 
-        public TEntity GetById(int Id)
+        public virtual TEntity GetById(int Id)
         {
             return this.entities.Find(Id);
         }
 
-        public List<TEntity> GetEntitiesWithFilters(Func<TEntity, bool> filter)
+        public virtual List<TEntity> GetEntitiesWithFilters(Func<TEntity, bool> filter)
         {
             return this.entities.Where(filter).ToList();
         }
@@ -64,7 +64,7 @@ namespace Sales.Infraestructure.Dao
             return result;
         }
 
-        public int Commit()
+        public virtual int Commit()
         {
             return this.context.SaveChanges();
         }

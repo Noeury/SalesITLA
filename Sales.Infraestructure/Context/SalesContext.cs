@@ -11,7 +11,7 @@ namespace Sales.Infraestructure.Context
 
         #region DbSet
 
-        public DbSet<Negocio> Negocios { get; set; }
+        public DbSet<Negocio>? Negocio { get; set; }
 
         #endregion
     }
