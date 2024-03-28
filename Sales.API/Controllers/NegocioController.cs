@@ -28,10 +28,10 @@ namespace Sales.API.Controllers
 
         [HttpPost("Save")]
         public async Task<IActionResult> CreateAsync(NegocioCreateModel createModel)
-        {S
+        {
             var negocioDto = new AddNegocioDto
             {
-    
+
                 UrlLogo = createModel.UrlLogo,
                 NombreLogo = createModel.NombreLogo,
                 NumeroDocumento = createModel.NumeroDocumento,
