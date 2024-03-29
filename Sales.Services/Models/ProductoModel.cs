@@ -1,10 +1,6 @@
-﻿
-
-using Sales.Domain.Core;
-
-namespace Sales.Domain.Entities
+﻿namespace Sales.AppServices.Models
 {
-    public class Producto : BaseEntity
+    public class ProductoModel
     {
         public string? CodigoBarra { get; set; }
         public string? Marca { get; set; }

@@ -26,25 +26,24 @@ namespace Sales.API.Controllers
             return Ok(negocios);
         }
 
-        [HttpPost("Save")]
-        public async Task<IActionResult> CreateAsync(NegocioCreateModel createModel)
+
+        [HttpPost("GetNegocioByName")]
+        public async Task<IActionResult> GetNeocioByName([FromBody] SearchNegocioModel searchNegocio)
         {
-            var negocioDto = new AddNegocioDto
-            {
+            var result = await this.negocioService.GetNeocioByName(searchNegocio.Nombre);
 
-                UrlLogo = createModel.UrlLogo,
-                NombreLogo = createModel.NombreLogo,
-                NumeroDocumento = createModel.NumeroDocumento,
-                Nombre = createModel.Nombre,
-                Correo = createModel.Correo,
-                Direccion = createModel.Direccion,
-                Telefono = createModel.Telefono,
-                PorcentajeImpuesto = createModel.PorcentajeImpuesto,
-                SimboloMoneda = createModel.SimboloMoneda,
+            if (!result.Success)
+                return BadRequest(result);
 
-            };
+            return Ok(result);
+        }
 
-            var result = await this.negocioService.Save(negocioDto);
+        [HttpPost("Save")]
+        public async Task<IActionResult> Create([FromBody] NegocioCreateModel createModel)
+        {
+            var negocio = createModel.ConvertFromNegocioCreateToAddNegocioDto();
+
+            var result = await this.negocioService.Save(negocio);
 
             if (!result.Success)
                 return BadRequest(result);
@@ -53,7 +52,7 @@ namespace Sales.API.Controllers
         }
 
         [HttpPost("Update")]
-        public async Task<IActionResult> Update(NegocioUpdateModel updateModel)
+        public async Task<IActionResult> Update([FromBody] NegocioUpdateModel updateModel)
         {
             var negocioDto = new UpdateNegocioDto
             {

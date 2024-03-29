@@ -1,7 +1,6 @@
 ﻿using Sales.API.Models.Negocio;
-using Sales.AppServices.Dtos;
+using Sales.AppServices.Dtos.Negocio;
 using Sales.Domain.Entities;
-using Sales.Infraestructure.Dao;
 
 namespace Sales.API.Extensions
 {
@@ -11,35 +10,61 @@ namespace Sales.API.Extensions
         {
             return new Negocio()
             {
-                Nombre = model.Nombre,
-                Telefono = model.Telefono,
-                Correo = model.Correo,
-                Direccion = model.Direccion,
-                IdUsuarioCreacion = model.IdUsuarioCreacion,
                 UrlLogo = model.UrlLogo,
                 NombreLogo = model.NombreLogo,
                 NumeroDocumento = model.NumeroDocumento,
+                Nombre = model.Nombre,
+                Correo = model.Correo,
+                Direccion = model.Direccion,
+                Telefono = model.Telefono,
                 PorcentajeImpuesto = model.PorcentajeImpuesto,
-                SimboloMoneda = model.SimboloMoneda,
-                FechaRegistro = model.FechaRegistro
+                SimboloMoneda = model.SimboloMoneda
             };
 
 
-        //            public string? UrlLogo { get; set; }
-        //public string? NombreLogo { get; set; }
-        //public string? NumeroDocumento { get; set; }
-        //public string? Nombre { get; set; }
-        //public string? Correo { get; set; }
-        //public string? Direccion { get; set; }
-        //public string? Telefono { get; set; }
-        //public decimal? PorcentajeImpuesto { get; set; }
-        //public string? SimboloMoneda { get; set; }
-    }
+        }
+
+        public static AddNegocioDto ConvertFromNegocioCreateToAddNegocioDto(this NegocioCreateModel model)
+        {
+            return new AddNegocioDto()
+            {
+                IdUsuarioCreacion = model.IdUsuarioCreacion,
+                FechaRegistro = model.FechaRegistro,
+                NombreLogo = model.NombreLogo,
+                NumeroDocumento = model.NumeroDocumento,
+                Nombre = model.Nombre,
+                Correo = model.Correo,
+                Direccion = model.Direccion,
+                Telefono = model.Telefono,
+                PorcentajeImpuesto = model.PorcentajeImpuesto,
+                SimboloMoneda = model.SimboloMoneda
+            };
+        }
 
         public static Negocio ConvertFromNegocioUpdateToNegocio(this NegocioUpdateModel model)
         {
 
             return new Negocio()
+            {
+                Id = model.NegocioId,
+                UrlLogo = model.UrlLogo,
+                NombreLogo = model.NombreLogo,
+                NumeroDocumento = model.NumeroDocumento,
+                Nombre = model.Nombre,
+                Correo = model.Correo,
+                Direccion = model.Direccion,
+                Telefono = model.Telefono,
+                PorcentajeImpuesto = model.PorcentajeImpuesto,
+                SimboloMoneda = model.SimboloMoneda,
+                FechaMod = model.FechaMod,
+                IdUsuarioMod = model.IdUsuarioMod
+            };
+        }
+
+        public static UpdateNegocioDto ConvertFromNegocioUpdateToUpdateNegocioDto(this NegocioUpdateModel model)
+        {
+
+            return new UpdateNegocioDto()
             {
                 Id = model.NegocioId,
                 UrlLogo = model.UrlLogo,

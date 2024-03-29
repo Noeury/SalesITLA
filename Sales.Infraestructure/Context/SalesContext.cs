@@ -12,7 +12,15 @@ namespace Sales.Infraestructure.Context
         #region DbSet
 
         public DbSet<Negocio>? Negocio { get; set; }
+        public DbSet<Venta>? Venta { get; set; }
+        public DbSet<Producto>? Producto { get; set; }
+        public DbSet<DetalleVenta>? DetalleVenta { get; set; }
 
         #endregion
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

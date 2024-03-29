@@ -1,5 +1,6 @@
-﻿using Sales.AppServices.Core;
-using Sales.AppServices.Dtos;
+﻿using Microsoft.Extensions.Logging;
+using Sales.AppServices.Core;
+using Sales.AppServices.Dtos.Negocio;
 using Sales.AppServices.Interfaces;
 using Sales.Domain.Entities;
 using Sales.Infraestructure.Dao;
@@ -11,8 +12,9 @@ namespace Sales.AppServices.Services
     {
 
         private readonly INegocioDb negocio;
+        private readonly ILogger<NegocioService> logger;
 
-        public NegocioService(INegocioDb negocio)
+        public NegocioService(INegocioDb negocio, ILogger<NegocioService> logger)
         {
             this.negocio = negocio;
         }
@@ -50,6 +52,41 @@ namespace Sales.AppServices.Services
                 throw;
             }
             return result;
+        }
+
+        public async Task<ServiceResult> GetNeocioByName(string name)
+        {
+            ServiceResult result = new();
+
+            try
+            {
+                var query = (from neg in this.negocio.GetAll()
+                             where neg.Nombre == name
+                             select new Models.NegocioModel()
+                             {
+                                 Nombre = neg.Nombre,
+                                 Correo = neg.Correo,
+                                 Direccion = neg.Direccion,
+                                 FechaRegistro = neg.FechaRegistro,
+                                 NombreLogo = neg.NombreLogo,
+                                 NumeroDocumento = neg.NumeroDocumento,
+                                 PorcentajeImpuesto = neg.PorcentajeImpuesto,
+                                 SimboloMoneda = neg.SimboloMoneda,
+                                 Telefono = neg.Telefono,
+                                 UrlLogo = neg.UrlLogo
+
+                             });
+
+                result.Data = query;
+
+            }
+            catch (Exception ex)
+            {
+                this.logger.LogError($"Error: {ex.Message}", ex.ToString());
+
+            }
+            return result;
+
         }
 
         public async Task<ServiceResult> Save(AddNegocioDto negocio)
@@ -100,7 +137,7 @@ namespace Sales.AppServices.Services
                     Telefono = negocio.Telefono,
                     PorcentajeImpuesto = negocio.PorcentajeImpuesto,
                     SimboloMoneda = negocio.SimboloMoneda,
-                    IdUsuarioCreacion = negocio.IdUsuarioCreacion,
+                    IdUsuarioMod = negocio.IdUsuarioMod,
 
                 };
                 result.Data = this.negocio.Update(n);

@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Sales.AppServices.Dtos
+﻿namespace Sales.AppServices.Dtos.Negocio
 {
-    public record UpdateNegocioDto
+    public record AddNegocioDto
     {
-        public int Id { get; set; }
+
+        public int IdUsuarioCreacion { get; set; }
+        public DateTime FechaRegistro { get; set; }
         public string? UrlLogo { get; set; }
         public string? NombreLogo { get; set; }
         public string? NumeroDocumento { get; set; }
@@ -19,7 +15,5 @@ namespace Sales.AppServices.Dtos
         public decimal? PorcentajeImpuesto { get; set; }
         public string? SimboloMoneda { get; set; }
 
-        public DateTime? FechaMod { get; set; }
-        public int? IdUsuarioMod { get; set; }
     }
 }

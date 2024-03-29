@@ -1,6 +1,6 @@
-﻿namespace Sales.Domain.Entities
+﻿namespace Sales.AppServices.Models
 {
-    public class Venta
+    public class VentaModel
     {
         public int Id { get; set; }
         public string? NumeroVenta { get; set; }
@@ -11,7 +11,7 @@
         public decimal? SubTotal { get; set; }
         public decimal? ImpuestoTotal { get; set; }
         public decimal? Total { get; set; }
-        public DateTime FechaRegistro { get; set; } = DateTime.Now();
+        public DateTime FechaRegistro { get; set; }
         public int IdUsuarioCreacion { get; set; }
     }
 }
