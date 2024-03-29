@@ -2,7 +2,7 @@
 {
     public record AddNegocioDto
     {
-
+        public int Id { get; set; }
         public int IdUsuarioCreacion { get; set; }
         public DateTime FechaRegistro { get; set; }
         public string? UrlLogo { get; set; }

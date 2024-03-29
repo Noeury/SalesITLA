@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Sales.AppServices.Dtos.Producto
+﻿namespace Sales.API.Models.Producto
 {
-    public class UpdateProductoDto
+    public class ProductoBaseModel
     {
-        public int Id { get; set; }
         public string? CodigoBarra { get; set; }
         public string? Marca { get; set; }
         public string? Descripcion;
@@ -17,8 +10,5 @@ namespace Sales.AppServices.Dtos.Producto
         public string? UrlImagen { get; set; }
         public string? NombreImagen { get; set; }
         public decimal? Precio { get; set; }
-
-        public DateTime? FechaMod { get; set; }
-        public int? IdUsuarioMod { get; set; }
     }
 }

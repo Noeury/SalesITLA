@@ -1,4 +1,4 @@
-﻿namespace Sales.Infraestructure.Models
+﻿namespace Sales.Infraestructure.Models.Producto
 {
     public class ProductoModel
     {

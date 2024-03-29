@@ -6,8 +6,8 @@ namespace Sales.AppServices.Interfaces
     public interface IProductoService
     {
         public Task<ServiceResult> GetProductos();
-        public Task<ServiceResult> GetProductoByName(string name);
-        public Task<ServiceResult> Save(AddProductoDto negocio);
-        public Task<ServiceResult> Update(UpdateProductoDto negocio);
+        public Task<ServiceResult> GetProductoByDescripcion(string descripcion);
+        public Task<ServiceResult> Save(AddProductoDto prducto);
+        public Task<ServiceResult> Update(UpdateProductoDto producto);
     }
 }

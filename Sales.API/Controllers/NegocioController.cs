@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Sales.API.Extensions;
 using Sales.API.Models.Negocio;
+using Sales.AppServices.Core;
 using Sales.AppServices.Dtos;
 using Sales.AppServices.Interfaces;
 using Sales.Infraestructure.Interfaces;
@@ -21,7 +22,14 @@ namespace Sales.API.Controllers
         [HttpGet("GetNegocios")]
         public IActionResult GetNeocios()
         {
+            ServiceResult result = new();
+
             var negocios = this.negocioService.GetNegocios();
+
+            result.Data = negocios;
+
+            if (!result.Success)
+                return BadRequest(result);
 
             return Ok(negocios);
         }
@@ -54,23 +62,9 @@ namespace Sales.API.Controllers
         [HttpPost("Update")]
         public async Task<IActionResult> Update([FromBody] NegocioUpdateModel updateModel)
         {
-            var negocioDto = new UpdateNegocioDto
-            {
-                Id = updateModel.NegocioId,
-                UrlLogo = updateModel.UrlLogo,
-                NombreLogo = updateModel.NombreLogo,
-                NumeroDocumento = updateModel.NumeroDocumento,
-                Nombre = updateModel.Nombre,
-                Correo = updateModel.Correo,
-                Direccion = updateModel.Direccion,
-                Telefono = updateModel.Telefono,
-                PorcentajeImpuesto = updateModel.PorcentajeImpuesto,
-                SimboloMoneda = updateModel.SimboloMoneda,
-                FechaMod = updateModel.FechaMod,
-                IdUsuarioMod = updateModel.IdUsuarioMod
-            };
+            var negocio = updateModel.ConvertFromNegocioUpdateToUpdateNegocioDto();
 
-            var result = await this.negocioService.Update(negocioDto);
+            var result = await this.negocioService.Update(negocio);
 
             if (!result.Success)
                 return BadRequest(result);

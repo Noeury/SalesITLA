@@ -5,9 +5,13 @@ namespace Sales.AppServices.Interfaces
 {
     public interface IVentaService
     {
-        public Task<ServiceResult> GetVentas();
-        public Task<ServiceResult> GetVentaById(int id);
-        public Task<ServiceResult> Save(AddVentaDto negocio);
+        public Task<ServiceResult> GetTotalVentasBySellerId(int selleId);
+
+        public ServiceResult GetVentas();
+
+
+        public Task<ServiceResult> Save(AddVentaDto venta);
+
 
     }
 }

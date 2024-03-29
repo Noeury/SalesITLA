@@ -1,24 +1,79 @@
-﻿using Sales.AppServices.Core;
+﻿using Microsoft.Extensions.Logging;
+using Sales.AppServices.Core;
 using Sales.AppServices.Dtos.Venta;
 using Sales.AppServices.Interfaces;
+using Sales.Domain.Entities;
+using Sales.Infraestructure.Interfaces;
 
 namespace Sales.AppServices.Services
 {
     public class VentaService : IVentaService
     {
-        public Task<ServiceResult> GetVentaById(int id)
+        private readonly IVentaDb venta;
+        private readonly ILogger<VentaService> logger;
+
+
+        public VentaService(IVentaDb venta, ILogger<VentaService> logger)
         {
-            throw new NotImplementedException();
+            this.venta = venta;
+            this.logger = logger;
+
+        }
+        public async Task<ServiceResult> GetTotalVentasBySellerId(int selleId)
+        {
+            ServiceResult result = new();
+
+            result.Data = await this.venta.totalDeVentaBySellerId(selleId);
+
+            return result;
+
         }
 
-        public Task<ServiceResult> GetVentas()
+        public ServiceResult GetVentaById(int id)
         {
-            throw new NotImplementedException();
+            ServiceResult result = new();
+
+            result.Data = this.venta.GetById(id);
+
+            return result;
         }
 
-        public Task<ServiceResult> Save(AddVentaDto negocio)
+        public ServiceResult GetVentas()
         {
-            throw new NotImplementedException();
+            ServiceResult result = new();
+
+            result.Data = this.venta.GetAll();
+
+            return result;
+        }
+
+        public async Task<ServiceResult> Save(AddVentaDto venta)
+        {
+            ServiceResult result = new();
+            try
+            {
+                Venta v = new()
+                {
+                    CocumentoCliente = venta.CocumentoCliente,
+                    FechaRegistro = venta.FechaRegistro,
+                    SubTotal = venta.SubTotal,
+                    Total = venta.Total,
+                    IdTipoDocumentoVenta = venta.IdTipoDocumentoVenta,
+                    IdUsuario = venta.IdUsuario,
+                    IdUsuarioCreacion = venta.IdUsuarioCreacion,
+                    ImpuestoTotal = venta.ImpuestoTotal,
+                    NombreCliente = venta.NombreCliente,
+                    NumeroVenta = venta.NumeroVenta
+                };
+
+                result.Data = this.venta.Save(v);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return result;
         }
     }
 }

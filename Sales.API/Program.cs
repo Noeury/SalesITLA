@@ -5,6 +5,8 @@ using Sales.Infraestructure.Context;
 using Sales.Infraestructure.Dao;
 using Sales.Infraestructure.Interfaces;
 using Sales.IOC.NegocioDependency;
+using Sales.IOC.ProductoDependency;
+using Sales.IOC.VentaDependency;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,8 +15,14 @@ var builder = WebApplication.CreateBuilder(args);
 //Adding DbContext
 builder.Services.AddDbContext<SalesContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("SalesContext")));
 
-//Addind Negocio Dependency
+//Adding Negocio Dependency
 builder.Services.AddNegocioModuleDependency();
+
+//Adding Producto Dependency
+builder.Services.AddProductoModuleDependency();
+
+//Adding Venta Dependency
+builder.Services.AddVentaModuleDependency();
 
 
 builder.Services.AddControllers();

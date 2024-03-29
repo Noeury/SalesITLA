@@ -2,6 +2,7 @@
 {
     public class ProductoModel
     {
+
         public string? CodigoBarra { get; set; }
         public string? Marca { get; set; }
         public string? Descripcion;

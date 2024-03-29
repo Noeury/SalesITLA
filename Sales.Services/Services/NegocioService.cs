@@ -3,7 +3,6 @@ using Sales.AppServices.Core;
 using Sales.AppServices.Dtos.Negocio;
 using Sales.AppServices.Interfaces;
 using Sales.Domain.Entities;
-using Sales.Infraestructure.Dao;
 using Sales.Infraestructure.Interfaces;
 
 namespace Sales.AppServices.Services
@@ -17,6 +16,7 @@ namespace Sales.AppServices.Services
         public NegocioService(INegocioDb negocio, ILogger<NegocioService> logger)
         {
             this.negocio = negocio;
+            this.logger = logger;
         }
         public async Task<ServiceResult> GetNegocios()
         {
@@ -46,8 +46,9 @@ namespace Sales.AppServices.Services
                 result.Data = query;
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                this.logger.LogError($"Error: {ex.Message}", ex.ToString());
 
                 throw;
             }
