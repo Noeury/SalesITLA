@@ -50,8 +50,8 @@ namespace Sales.Web.Services
                             }
                             else
                             {
-                                result.Success = false;
-                                result.Message = "Error conectandose al end point de Save Negocio.";
+                                result.success = false;
+                                result.message = "Error conectandose al end point de Save Negocio.";
                             }
 
                         }
@@ -61,9 +61,9 @@ namespace Sales.Web.Services
             catch (Exception ex)
             {
 
-                result.Success = false;
-                result.Message = "Error guardando el Negocio.";
-                this.logger.LogError(result.Message, ex.ToString()); ;
+                result.success = false;
+                result.message = "Error guardando el Negocio.";
+                this.logger.LogError(result.message, ex.ToString()); ;
             }
             return result;
         }
@@ -89,17 +89,17 @@ namespace Sales.Web.Services
                         }
                         else
                         {
-                            result.Success = false;
-                            result.Message = "Error conectandose al end point de GetNegocioByName.";
+                            result.success = false;
+                            result.message = "Error conectandose al end point de GetNegocioByName.";
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                result.Success = false;
-                result.Message = "Error obteniendo el neogcio.";
-                this.logger.LogError(result.Message, ex.ToString()); ;
+                result.success = false;
+                result.message = "Error obteniendo el neogcio.";
+                this.logger.LogError(result.message, ex.ToString()); ;
             }
             return result;
         }
@@ -123,17 +123,17 @@ namespace Sales.Web.Services
                         }
                         else
                         {
-                            result.Success = false;
-                            result.Message = "Error conectandose al end point de GetNegocios.";
+                            result.success = false;
+                            result.message = "Error conectandose al end point de GetNegocios.";
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                result.Success = false;
-                result.Message = "Error obteniendo los negocios.";
-                this.logger.LogError(result.Message, ex.ToString()); ;
+                result.success = false;
+                result.message = "Error obteniendo los negocios.";
+                this.logger.LogError(result.message, ex.ToString()); ;
 
             }
 
@@ -172,8 +172,8 @@ namespace Sales.Web.Services
                             }
                             else
                             {
-                                result.Success = false;
-                                result.Message = "Error conectandose al end point de Save Negocios.";
+                                result.success = false;
+                                result.message = "Error conectandose al end point de Save Negocios.";
                             }
 
                         }
@@ -183,9 +183,9 @@ namespace Sales.Web.Services
             catch (Exception ex)
             {
 
-                result.Success = false;
-                result.Message = "Error guardando el negocio.";
-                this.logger.LogError(result.Message, ex.ToString()); ;
+                result.success = false;
+                result.message = "Error guardando el negocio.";
+                this.logger.LogError(result.message, ex.ToString()); ;
             }
             return result;
         }

@@ -20,18 +20,16 @@ namespace Sales.API.Controllers
         }
 
         [HttpGet("GetNegocios")]
-        public IActionResult GetNeocios()
+        public async Task<IActionResult> GetNeocios()
         {
-            ServiceResult result = new();
 
-            var negocios = this.negocioService.GetNegocios();
+            var result = await this.negocioService.GetNegocios();
 
-            result.Data = negocios;
 
             if (!result.Success)
                 return BadRequest(result);
 
-            return Ok(negocios);
+            return Ok(result);
         }
 
 

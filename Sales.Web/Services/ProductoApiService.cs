@@ -52,8 +52,8 @@ namespace Sales.Web.Services
                             }
                             else
                             {
-                                result.Success = false;
-                                result.Message = "Error conectandose al end point de Save Producto.";
+                                result.success = false;
+                                result.message = "Error conectandose al end point de Save Producto.";
                             }
 
                         }
@@ -63,9 +63,9 @@ namespace Sales.Web.Services
             catch (Exception ex)
             {
 
-                result.Success = false;
-                result.Message = "Error guardando el producto.";
-                this.logger.LogError(result.Message, ex.ToString()); ;
+                result.success = false;
+                result.message = "Error guardando el producto.";
+                this.logger.LogError(result.message, ex.ToString()); ;
             }
             return result;
         }
@@ -91,17 +91,17 @@ namespace Sales.Web.Services
                         }
                         else
                         {
-                            result.Success = false;
-                            result.Message = "Error conectandose al end point de GetProdcutoByDescripcion.";
+                            result.success = false;
+                            result.message = "Error conectandose al end point de GetProdcutoByDescripcion.";
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                result.Success = false;
-                result.Message = "Error obteniendo el producto.";
-                this.logger.LogError(result.Message, ex.ToString()); ;
+                result.success = false;
+                result.message = "Error obteniendo el producto.";
+                this.logger.LogError(result.message, ex.ToString()); ;
             }
             return result;
         }
@@ -125,17 +125,17 @@ namespace Sales.Web.Services
                         }
                         else
                         {
-                            result.Success = false;
-                            result.Message = "Error conectandose al end point de GetProductos.";
+                            result.success = false;
+                            result.message = "Error conectandose al end point de GetProductos.";
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                result.Success = false;
-                result.Message = "Error obteniendo los productos.";
-                this.logger.LogError(result.Message, ex.ToString()); ;
+                result.success = false;
+                result.message = "Error obteniendo los productos.";
+                this.logger.LogError(result.message, ex.ToString()); ;
 
             }
 
@@ -170,8 +170,8 @@ namespace Sales.Web.Services
                             }
                             else
                             {
-                                result.Success = false;
-                                result.Message = "Error conectandose al end point de Save Producto.";
+                                result.success = false;
+                                result.message = "Error conectandose al end point de Save Producto.";
                             }
 
                         }
@@ -181,9 +181,9 @@ namespace Sales.Web.Services
             catch (Exception ex)
             {
 
-                result.Success = false;
-                result.Message = "Error guardando el producto.";
-                this.logger.LogError(result.Message, ex.ToString()); ;
+                result.success = false;
+                result. message = "Error guardando el producto.";
+                this.logger.LogError(result.message, ex.ToString()); ;
             }
             return result;
         }

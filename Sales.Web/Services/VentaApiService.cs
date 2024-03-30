@@ -52,8 +52,8 @@ namespace Sales.Web.Services
                             }
                             else
                             {
-                                result.Success = false;
-                                result.Message = "Error conectandose al end point de Save Negocio.";
+                                result.success = false;
+                                result.message = "Error conectandose al end point de Save Negocio.";
                             }
 
                         }
@@ -63,15 +63,15 @@ namespace Sales.Web.Services
             catch (Exception ex)
             {
 
-                result.Success = false;
-                result.Message = "Error guardando el Negocio.";
-                this.logger.LogError(result.Message, ex.ToString()); ;
+                result.success = false;
+                result.message = "Error guardando el Negocio.";
+                this.logger.LogError(result.message, ex.ToString()); ;
             }
             return result;
         }
 
 
-        public async Task<GetEntityResult<VentaResponseModel>> GetTotalVetaBySellerId(TotalVentaBySellerId sellerI)
+        public async Task<GetEntityResult<VentaResponseModel>> GetTotalVetaBySellerId(SearchTotalVentaBySellerId sellerI)
         {
             GetEntityResult<VentaResponseModel> result = new GetEntityResult<VentaResponseModel>();
 
@@ -92,17 +92,17 @@ namespace Sales.Web.Services
                         }
                         else
                         {
-                            result.Success = false;
-                            result.Message = "Error conectandose al end point de TotalDeVentaBySellerId.";
+                            result.success = false;
+                            result.message = "Error conectandose al end point de TotalDeVentaBySellerId.";
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                result.Success = false;
-                result.Message = "Error obteniendo el TotalDeVentaBySellerId.";
-                this.logger.LogError(result.Message, ex.ToString()); ;
+                result.success = false;
+                result.message = "Error obteniendo el TotalDeVentaBySellerId.";
+                this.logger.LogError(result.message, ex.ToString()); ;
             }
             return result;
         }
@@ -115,7 +115,7 @@ namespace Sales.Web.Services
             {
                 using (var httpClient = this.clientFactory.CreateClient())
                 {
-                    var url = $"{this.baseUrl}/Venta/GetVentas";
+                    var url = $"{this.baseUrl}/Venta/GetAll";
 
                     using (var response = await httpClient.GetAsync(url))
                     {
@@ -126,17 +126,17 @@ namespace Sales.Web.Services
                         }
                         else
                         {
-                            result.Success = false;
-                            result.Message = "Error conectandose al end point de GetVentas.";
+                            result.success = false;
+                            result.message = "Error conectandose al end point de GetVentas.";
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                result.Success = false;
-                result.Message = "Error obteniendo las ventas.";
-                this.logger.LogError(result.Message, ex.ToString()); ;
+                result.success = false;
+                result.message = "Error obteniendo las ventas.";
+                this.logger.LogError(result.message, ex.ToString()); ;
 
             }
 

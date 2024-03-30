@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Sales.API.Extensions;
-using Sales.API.Models.Negocio;
 using Sales.API.Models.Producto;
-using Sales.AppServices.Core;
 using Sales.AppServices.Interfaces;
 
 namespace Sales.API.Controllers
@@ -19,11 +17,10 @@ namespace Sales.API.Controllers
         }
 
         [HttpGet("GetProductos")]
-        public IActionResult GetProductos()
+        public async Task<IActionResult> GetProductos()
         {
-            ServiceResult result = new();
-            var productos = this.productoService.GetProductos();
-            result.Data = productos;
+            var result = await this.productoService.GetProductos();
+
 
             if (!result.Success)
                 return BadRequest(result);

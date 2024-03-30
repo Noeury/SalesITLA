@@ -1,71 +1,72 @@
 ﻿@model IEnumerable<Sales.Web.Models.Producto.ProductoResponseModel>
 
 @{
-    ViewData["Title"] = "Index";
+	ViewData["Title"] = "Index";
 }
 
 <h1>Productos</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+	<a asp-action="Create">Create New</a>
 </p>
 <table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.CodigoBarra)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Marca)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdCategoria)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Stock)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UrlImagen)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NombreImagen)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Precio)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CodigoBarra)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Marca)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdCategoria)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Stock)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UrlImagen)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NombreImagen)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Precio)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
-}
-    </tbody>
+	<thead>
+		<tr>
+			<th>
+				@Html.DisplayNameFor(model => model.codigoBarra)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.marca)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.idCategoria)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.stock)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.urlImagen)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.nombreImagen)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.precio)
+			</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>
+					@Html.DisplayFor(modelItem => item.codigoBarra)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.marca)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.idCategoria)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.stock)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.urlImagen)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.nombreImagen)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.precio)
+				</td>
+				<td>
+					@Html.ActionLink("Edit", "Edit", new { id = item.descripcion }) |
+					@Html.ActionLink("Details", "Details", new { id = item.descripcion }) |
+					@Html.ActionLink("Delete", "Delete", new { id = item.descripcion })
+				</td>
+			</tr>
+		}
+	</tbody>
 </table>

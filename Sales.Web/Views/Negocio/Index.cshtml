@@ -1,0 +1,101 @@
+﻿@model IEnumerable<Sales.Web.Models.Negocio.NegocioResponseModel>
+
+@{
+    ViewData["Title"] = "IndexAsync";
+}
+
+<h1>IndexAsync</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.idUsuarioCreacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.urlLogo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nombreLogo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.numeroDocumento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.correo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.direccion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.telefono)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.porcentajeImpuesto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.simboloMoneda)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fechaRegistro)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.idUsuarioCreacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.urlLogo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombreLogo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.numeroDocumento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.correo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.direccion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.telefono)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.porcentajeImpuesto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.simboloMoneda)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fechaRegistro)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

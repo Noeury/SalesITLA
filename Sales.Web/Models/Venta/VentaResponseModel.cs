@@ -2,15 +2,15 @@
 {
     public class VentaResponseModel
     {
-        public string? NumeroVenta { get; set; }
-        public int? IdTipoDocumentoVenta { get; set; }
-        public int? IdUsuario { get; set; }
-        public string? CocumentoCliente { get; set; }
-        public string? NombreCliente { get; set; }
-        public decimal? SubTotal { get; set; }
-        public decimal? ImpuestoTotal { get; set; }
-        public decimal? Total { get; set; }
-        public DateTime FechaRegistro { get; set; }
-        public int IdUsuarioCreacion { get; set; }
+        public string? numeroVenta { get; set; }
+        public int? idTipoDocumentoVenta { get; set; }
+        public int? idUsuario { get; set; }
+        public string? cocumentoCliente { get; set; }
+        public string? nombreCliente { get; set; }
+        public decimal? subTotal { get; set; }
+        public decimal? impuestoTotal { get; set; }
+        public decimal? total { get; set; }
+        public DateTime fechaRegistro { get; set; }
+        public int idUsuarioCreacion { get; set; }
     }
 }

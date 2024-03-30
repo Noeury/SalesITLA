@@ -2,13 +2,13 @@
 {
     public class ProductoResponseModel
     {
-        public string? CodigoBarra { get; set; }
-        public string? Marca { get; set; }
-        public string? Descripcion;
-        public int? IdCategoria { get; set; }
-        public int? Stock { get; set; }
-        public string? UrlImagen { get; set; }
-        public string? NombreImagen { get; set; }
-        public decimal? Precio { get; set; }
+        public string? codigoBarra { get; set; }
+        public string? marca { get; set; }
+        public string? descripcion;
+        public int? idCategoria { get; set; }
+        public int? stock { get; set; }
+        public string? urlImagen { get; set; }
+        public string? nombreImagen { get; set; }
+        public decimal? precio { get; set; }
     }
 }

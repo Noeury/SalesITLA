@@ -7,7 +7,7 @@ namespace Sales.Web.Contracts
     {
         Task<GetEntityResult<List<VentaResponseModel>>> GetVentas();
 
-        Task<GetEntityResult<VentaResponseModel>> GetTotalVetaBySellerId(TotalVentaBySellerId sellerI);
+        Task<GetEntityResult<VentaResponseModel>> GetTotalVetaBySellerId(SearchTotalVentaBySellerId sellerI);
         Task<ServiceResult> CreateVenta(VentaCreateModel venta);
     }
 }

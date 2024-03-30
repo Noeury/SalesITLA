@@ -29,6 +29,7 @@ namespace Sales.AppServices.Services
                              where prod.Descripcion == descripcion
                              select new Models.ProductoModel()
                              {
+                                 Id = prod.Id,
                                  Descripcion = prod.Descripcion,
                                  CodigoBarra = prod.CodigoBarra,
                                  IdCategoria = prod.IdCategoria,

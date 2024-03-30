@@ -2,7 +2,7 @@
 {
     public class GetEntityResult<TModel> : ServiceResult
     {
-        public TModel? Data { get; set; }
+        public TModel data { get; set; }
 
     }
 }

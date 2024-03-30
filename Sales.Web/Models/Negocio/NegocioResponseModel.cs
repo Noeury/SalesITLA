@@ -2,18 +2,18 @@
 {
     public class NegocioResponseModel
     {
-        public int Id { get; set; }
-        public int IdUsuarioCreacion { get; set; }
-        public string? UrlLogo { get; set; }
-        public string? NombreLogo { get; set; }
-        public string? NumeroDocumento { get; set; }
-        public string? Nombre { get; set; }
-        public string? Correo { get; set; }
-        public string? Direccion { get; set; }
-        public string? Telefono { get; set; }
-        public decimal? PorcentajeImpuesto { get; set; }
-        public string? SimboloMoneda { get; set; }
-        public DateTime FechaRegistro { get; set; }
+        public int id { get; set; }
+        public int idUsuarioCreacion { get; set; }
+        public string? urlLogo { get; set; }
+        public string? nombreLogo { get; set; }
+        public string? numeroDocumento { get; set; }
+        public string? nombre { get; set; }
+        public string? correo { get; set; }
+        public string? direccion { get; set; }
+        public string? telefono { get; set; }
+        public decimal? porcentajeImpuesto { get; set; }
+        public string? simboloMoneda { get; set; }
+        public DateTime fechaRegistro { get; set; }
 
     }
 }

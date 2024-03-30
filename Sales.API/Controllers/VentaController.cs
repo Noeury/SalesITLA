@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Sales.API.Extensions;
-using Sales.API.Models.Negocio;
 using Sales.API.Models.Venta;
 using Sales.AppServices.Interfaces;
 
@@ -20,10 +19,13 @@ namespace Sales.API.Controllers
 
 
         [HttpGet("GetAll")]
-        public IActionResult GetVentas()
+        public async Task<IActionResult> GetVentas()
         {
 
             var result = this.ventaService.GetVentas();
+
+            if (!result.Success)
+                return BadRequest(result);
 
             return Ok(result);
         }

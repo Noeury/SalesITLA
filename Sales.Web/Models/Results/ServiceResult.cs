@@ -2,7 +2,7 @@
 {
     public class ServiceResult
     {
-        public string? Message { get; set; }
-        public bool Success { get; set; } = true;
+        public string? message { get; set; }
+        public bool success { get; set; } = true;
     }
 }

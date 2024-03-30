@@ -18,13 +18,13 @@ namespace Sales.Web.Controllers
         {
             var result = await this.productoService.GetProductos();
 
-            if (!result.Success)
+            if (!result.success)
             {
-                ViewBag.Message = result.Message;
+                ViewBag.Message = result.message;
                 return View();
             }
 
-            var productos = result.Data;
+            var productos = result.data;
 
             return View(productos);
         }
@@ -34,15 +34,52 @@ namespace Sales.Web.Controllers
 
             var result = await this.productoService.GetProductoByDescripcion(search);
 
-            if (!result.Success)
+            if (!result.success)
             {
-                ViewBag.Message = result.Message;
+                ViewBag.Message = result.message;
                 return View();
             }
 
-            var producto = result.Data;
+            var producto = result.data;
 
             return View(producto);
+        }
+
+        public async Task<IActionResult> Details(ProductoSearchModel search)
+        {
+            var result = await this.productoService.GetProductoByDescripcion(search);
+
+            if (!result.success)
+            {
+                ViewBag.Message = result.message;
+                return View();
+            }
+
+            var producto = result.data;
+
+            return View(producto);
+        }
+
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(ProductoCreateModel productoModel)
+        {
+            productoModel.FechaRegistro = DateTime.Now;
+            productoModel.IdUsuarioCreacion = 1;
+            var result =  await this.productoService.CreateProducto(productoModel);
+
+            if (!result.success)
+            {
+                ViewBag.Message = result.message;
+                return View();
+            }
+
+            return RedirectToAction("Index");
         }
     }
 }
